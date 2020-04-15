@@ -14,3 +14,5 @@ indices.memory.index_buffer_size: 20%
 
 bootstrap.memory_lock: false
 bootstrap.system_call_filter: false
+
+xpack.monitoring.collection.enabled: true
