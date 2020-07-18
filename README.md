@@ -4,6 +4,12 @@ This repository is used to keep my example projects. Welcome contact me to get m
 
 这个仓库用来记录自己示例工程代码，包括但不限于shell、java、python等等。欢迎大家与我一起沟通讨论。
 
+## Docker 相关配置
+
+Docker 使得我们在本地配置一些测试环境变得非常容易，而且非常节省资源。
+
+## shell 脚本
+
 ## Java 相关案例
 
 [Metrics包的使用方法](https://www.cnblogs.com/cocowool/p/java_metrics.html)
