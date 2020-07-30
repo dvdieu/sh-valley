@@ -1,0 +1,8 @@
+
+# 打开自动完成功能
+autoload -U compinit && compinit
+
+# 开启自动切换目录功能
+setopt auto_cd
+
+# alias ls=`ls -lh`
