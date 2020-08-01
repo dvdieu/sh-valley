@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if -f file_compaer.sh then:
+if [[ -e file_compare.sh ]]; then
 	echo "Yes"
-else:
+else
 	echo "No"
 fi
