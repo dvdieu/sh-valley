@@ -14,9 +14,24 @@ else
 	echo "folder /etc dosn't exists!"
 fi
 
-if [[ -f file_compare ]]; then
+# 判断 file_compare.sh 是否为普通文件
+if [[ -f file_compare.sh ]]; then
 	echo "Common file!"
 else
 	echo "Not common file!"
+fi
+
+# 判断 file_compare.sh 是否为块文件
+if [[ -b file_compare.sh ]]; then
+	echo "Block file!"
+else
+	echo "Not block file!"
+fi
+
+# 判断 file_compare.sh 是否为字符设备文件
+if [[ -c file_compare.sh ]]; then
+	echo "Character file!"
+else
+	echo "Not character file!"
 fi
 
