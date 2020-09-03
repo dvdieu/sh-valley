@@ -1,7 +1,7 @@
 version: "2.1"
 services:
   es-node1:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.7.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     hostname: es-node1
     expose:         #不会将端口暴露给容器外应用
       - "9001"
@@ -9,7 +9,8 @@ services:
       - "9200:9200"
       - "9300:9300"
     volumes:
-      - ~/Projects/sh-valley/docker-conf/elasticstack/cluster/node1/es1.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./node1/es1.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./data/elasticsearch:/usr/share/elasticsearch/data
     environment:
       - cluster.name=es-cluster
       - bootstrap.memory_lock=true
@@ -22,7 +23,7 @@ services:
       es-cluster-network:
         ipv4_address: 172.21.0.10
   es-node2:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.7.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     hostname: es-node2
     expose:         #不会将端口暴露给容器外应用
       - "9002"
@@ -30,7 +31,8 @@ services:
       - "9201:9201"
       - "9301:9301"
     volumes:
-      - ~/Projects/sh-valley/docker-conf/elasticstack/cluster/node2/es2.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./node2/es2.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./data/elasticsearch:/usr/share/elasticsearch/data
     environment:
       - cluster.name=es-cluster
       - bootstrap.memory_lock=true
@@ -43,7 +45,7 @@ services:
       es-cluster-network:
         ipv4_address: 172.21.0.11
   es-node3:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.7.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     hostname: es-node3
     expose:         #不会将端口暴露给容器外应用
       - "9003"
@@ -51,7 +53,8 @@ services:
       - "9202:9202"
       - "9302:9302"
     volumes:
-      - ~/Projects/sh-valley/docker-conf/elasticstack/cluster/node3/es3.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./node3/es3.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./data/elasticsearch:/usr/share/elasticsearch/data
     environment:
       - cluster.name=es-cluster
       - bootstrap.memory_lock=true
@@ -63,16 +66,16 @@ services:
     networks:
       es-cluster-network:
         ipv4_address: 172.21.0.12
-  kibana:
-    image: docker.elastic.co/kibana/kibana:6.7.0
-    ports:
-      - "5601:5601"
-    volumes:
-      - ~/Projects/sh-valley/docker-conf/elasticstack/cluster/kibana.yml:/usr/share/kibana/config/kibana.yml
-    environment:
-      - ELASTICSEARCH_URL=http://es-node1:9200
-    networks:
-      - es-cluster-network
+  # kibana:
+  #   image: docker.elastic.co/kibana/kibana:7.9.0
+  #   ports:
+  #     - "5601:5601"
+  #   volumes:
+  #     - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+  #   environment:
+  #     - ELASTICSEARCH_URL=http://es-node1:9200
+  #   networks:
+  #     - es-cluster-network
 networks:
   es-cluster-network:
     driver: bridge
